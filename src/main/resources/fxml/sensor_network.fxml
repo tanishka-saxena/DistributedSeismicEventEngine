@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.seismic.controller.SensorNetworkController" spacing="10" styleClass="page">
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Sensor Network" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Load event counts from storage" onAction="#onLoadEventCounts"/>
+    </HBox>
+    <SplitPane dividerPositions="0.42" VBox.vgrow="ALWAYS">
+        <VBox spacing="6" styleClass="card">
+            <Label text="NETWORK MAP (illustrative coordinates; click a sensor)" styleClass="card-title"/>
+            <Pane fx:id="canvasHolder" VBox.vgrow="ALWAYS" minHeight="260" styleClass="map-holder"/>
+            <FlowPane hgap="12" vgap="2" styleClass="legend">
+                <Label text="● active" styleClass="legend-active"/>
+                <Label text="● offline" styleClass="legend-offline"/>
+                <Label text="● faulty" styleClass="legend-faulty"/>
+                <Label text="○ ring = filtered amplitude" styleClass="legend-ring"/>
+                <Label text="○ orange = suspicious/invalid reading" styleClass="legend-quality"/>
+            </FlowPane>
+        </VBox>
+        <VBox spacing="8">
+            <TableView fx:id="sensorTable" VBox.vgrow="ALWAYS" minHeight="200"/>
+            <VBox styleClass="card" spacing="4">
+                <Label fx:id="selectedTitle" styleClass="card-title"/>
+                <Label fx:id="selectedDetail" wrapText="true"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label fx:id="readingsSourceLabel" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button text="Show live readings" onAction="#onShowLiveReadings"/>
+                    <Button text="Load stored readings" onAction="#onLoadStoredReadings"/>
+                </HBox>
+                <LineChart fx:id="sensorChart" prefHeight="190" minHeight="150">
+                    <xAxis><NumberAxis label="reading #" forceZeroInRange="false"/></xAxis>
+                    <yAxis><NumberAxis label="amplitude"/></yAxis>
+                </LineChart>
+                <TableView fx:id="readingsTable" prefHeight="170"/>
+            </VBox>
+        </VBox>
+    </SplitPane>
+</VBox>

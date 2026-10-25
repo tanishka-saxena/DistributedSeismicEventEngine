@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.seismic.controller.DatasetController" spacing="10" styleClass="page">
+    <Label text="Dataset" styleClass="page-title"/>
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Button fx:id="loadBundledButton" text="Load bundled dataset" onAction="#onLoadBundled" styleClass="btn-primary"/>
+        <Button text="Import CSV..." onAction="#onImportCsv"/>
+        <Button fx:id="analyzeButton" text="Analyse dataset" onAction="#onAnalyze" styleClass="btn-primary"/>
+        <Button fx:id="exportReadingsButton" text="Export processed readings..." onAction="#onExportReadings"/>
+        <Button fx:id="exportEventsButton" text="Export events..." onAction="#onExportEvents"/>
+        <Separator orientation="VERTICAL"/>
+        <Button text="Import USGS catalog..." onAction="#onImportCatalog"/>
+        <ProgressIndicator fx:id="busyIndicator" prefWidth="22" prefHeight="22"/>
+    </HBox>
+    <Label fx:id="datasetStatus" text="No dataset loaded." wrapText="true"/>
+
+    <HBox spacing="10">
+        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="fileLabel" text="-" styleClass="metric-small"/><Label text="File" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="totalLabel" text="-" styleClass="metric-value"/><Label text="Total records" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card, metric-ok" HBox.hgrow="ALWAYS"><Label fx:id="validLabel" text="-" styleClass="metric-value"/><Label text="Valid" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card, metric-warn" HBox.hgrow="ALWAYS"><Label fx:id="suspiciousLabel" text="-" styleClass="metric-value"/><Label text="Suspicious" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card, metric-bad" HBox.hgrow="ALWAYS"><Label fx:id="invalidLabel" text="-" styleClass="metric-value"/><Label text="Invalid (kept, flagged)" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card, metric-muted" HBox.hgrow="ALWAYS"><Label fx:id="rejectedLabel" text="-" styleClass="metric-value"/><Label text="Rejected rows" styleClass="metric-label"/></VBox>
+        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="rangeLabel" text="-" styleClass="metric-small"/><Label text="Time range" styleClass="metric-label"/></VBox>
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Preview">
+            <VBox spacing="6" styleClass="tab-body">
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="Search reading, sensor, label or note" prefWidth="320"/>
+                    <ComboBox fx:id="qualityFilter"/>
+                    <Label fx:id="shownLabel"/>
+                </HBox>
+                <TableView fx:id="previewTable" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </Tab>
+        <Tab text="Rejected rows">
+            <VBox styleClass="tab-body"><TableView fx:id="rejectedTable" VBox.vgrow="ALWAYS"/></VBox>
+        </Tab>
+        <Tab text="Statistics">
+            <HBox spacing="10" styleClass="tab-body">
+                <TableView fx:id="statsTable" HBox.hgrow="ALWAYS"/>
+                <VBox spacing="6" prefWidth="330">
+                    <Label fx:id="amplitudeStatsLabel" wrapText="true"/>
+                    <ListView fx:id="labelCountsList" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+        </Tab>
+        <Tab text="Detection results">
+            <VBox spacing="6" styleClass="tab-body">
+                <Label fx:id="analysisSummary" text="Not analysed yet." wrapText="true"/>
+                <TableView fx:id="analysisTable" VBox.vgrow="ALWAYS" prefHeight="200"/>
+                <Label text="Sensor status changes, dismissed anomalies and fault checks during the replay:" styleClass="card-title"/>
+                <ListView fx:id="analysisLog" prefHeight="170"/>
+            </VBox>
+        </Tab>
+        <Tab text="Earthquake catalog (real)">
+            <VBox spacing="6" styleClass="tab-body">
+                <Label fx:id="catalogSummary" wrapText="true"
+                       text="Public earthquake catalogs (USGS CSV export) list real events. They contain no raw sensor measurements, so they are shown separately and never mixed with the synthetic sensor readings."/>
+                <TableView fx:id="catalogTable" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,17 @@
+# Virtual sensor network (15 nodes, 5 zones ~30 km apart). Coordinates are ILLUSTRATIVE ONLY.
+sensor_id,sensor_name,zone,latitude,longitude
+S01,Central Station A,Central,27.713475,85.300000
+S02,Central Station B,Central,27.691017,85.325365
+S03,Central Station C,Central,27.691017,85.274635
+S04,North Station A,North,27.982968,85.300000
+S05,North Station B,North,27.960510,85.325428
+S06,North Station C,North,27.960510,85.274572
+S07,East Station A,East,27.713475,85.604377
+S08,East Station B,East,27.691017,85.629742
+S09,East Station C,East,27.691017,85.579012
+S10,South Station A,South,27.443981,85.300000
+S11,South Station B,South,27.421524,85.325303
+S12,South Station C,South,27.421524,85.274697
+S13,West Station A,West,27.713475,84.995623
+S14,West Station B,West,27.691017,85.020988
+S15,West Station C,West,27.691017,84.970258

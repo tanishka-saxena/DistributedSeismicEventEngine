@@ -1,0 +1,16 @@
+# MySQL connection settings for the Distributed Seismic Event Detection Engine.
+#
+# 1. Copy this file to config/database.properties (that file is git-ignored).
+# 2. Fill in your own user and password. Never commit a real password.
+#
+# Environment variables override this file if set:
+#   SEISMIC_DB_URL, SEISMIC_DB_USER, SEISMIC_DB_PASSWORD
+#
+# If config/database.properties does not exist (or db.url is empty) the application runs in
+# DEMO MODE: everything works, but data is kept in memory only and is lost on exit.
+#
+# URL options: connectTimeout keeps start-up fast when MySQL is down;
+# rewriteBatchedStatements speeds up the batched reading inserts.
+db.url=jdbc:mysql://localhost:3306/seismic_engine?connectTimeout=3000&rewriteBatchedStatements=true
+db.user=seismic_app
+db.password=CHANGE_ME

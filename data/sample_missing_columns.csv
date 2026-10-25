@@ -1,0 +1,2 @@
+reading_id,sensor_id,timestamp_utc,frequency_hz,duration_s
+M0001,S01,2026-10-02T11:00:00Z,4.0,1.0

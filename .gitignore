@@ -1,0 +1,19 @@
+# Build output
+target/
+
+# Local secrets: copy config/database.properties.example instead
+config/database.properties
+.env
+
+# Runtime logs and exports
+logs/
+*.log
+export*.csv
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/

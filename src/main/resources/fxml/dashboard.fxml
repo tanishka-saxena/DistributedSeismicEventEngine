@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.seismic.controller.DashboardController" fitToWidth="true" styleClass="page-scroll">
+    <VBox spacing="14" styleClass="page">
+        <Label text="Dashboard" styleClass="page-title"/>
+
+        <HBox spacing="10">
+            <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="totalSensorsValue" styleClass="metric-value"/><Label text="Total sensors" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card, metric-ok" HBox.hgrow="ALWAYS"><Label fx:id="activeValue" styleClass="metric-value"/><Label text="Active" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card, metric-muted" HBox.hgrow="ALWAYS"><Label fx:id="offlineValue" styleClass="metric-value"/><Label text="Offline" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card, metric-bad" HBox.hgrow="ALWAYS"><Label fx:id="faultyValue" styleClass="metric-value"/><Label text="Suspected faulty" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="eventsValue" styleClass="metric-value"/><Label text="Events detected" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="anomaliesValue" styleClass="metric-value"/><Label text="Isolated anomalies" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card" HBox.hgrow="ALWAYS"><Label fx:id="readingsValue" styleClass="metric-value"/><Label text="Readings processed" styleClass="metric-label"/></VBox>
+            <VBox styleClass="metric-card, metric-warn" HBox.hgrow="ALWAYS"><Label fx:id="alertsValue" styleClass="metric-value"/><Label text="Open alerts" styleClass="metric-label"/></VBox>
+        </HBox>
+
+        <HBox spacing="12">
+            <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS" prefWidth="400">
+                <Label text="SYSTEM STATUS" styleClass="card-title"/>
+                <Label fx:id="systemStatusLabel" styleClass="system-status"/>
+                <Label fx:id="systemStatusDetail" wrapText="true"/>
+            </VBox>
+            <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS" prefWidth="600">
+                <Label text="LATEST EVENT AND CONFIDENCE FACTORS" styleClass="card-title"/>
+                <Label fx:id="latestEventLabel" styleClass="latest-event"/>
+                <Label fx:id="latestEventDetail" wrapText="true"/>
+                <GridPane hgap="8" vgap="4">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="170"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints minWidth="40"/>
+                    </columnConstraints>
+                    <Label text="Sensor agreement (30%)" GridPane.rowIndex="0"/>
+                    <ProgressBar fx:id="agreementBar" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label fx:id="agreementValue" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <Label text="Temporal consistency (25%)" GridPane.rowIndex="1"/>
+                    <ProgressBar fx:id="temporalBar" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label fx:id="temporalValue" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <Label text="Spatial consistency (20%)" GridPane.rowIndex="2"/>
+                    <ProgressBar fx:id="spatialBar" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label fx:id="spatialValue" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label text="Signal strength/consistency (25%)" GridPane.rowIndex="3"/>
+                    <ProgressBar fx:id="signalBar" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label fx:id="signalValue" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                </GridPane>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="12">
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="700">
+                <Label text="LIVE AMPLITUDE BY ZONE (max filtered amplitude, synthetic units)" styleClass="card-title"/>
+                <LineChart fx:id="amplitudeChart" prefHeight="280">
+                    <xAxis><NumberAxis label="seconds since start" forceZeroInRange="false" autoRanging="true"/></xAxis>
+                    <yAxis><NumberAxis label="amplitude" autoRanging="true"/></yAxis>
+                </LineChart>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="380">
+                <Label text="EVENTS BY SEVERITY" styleClass="card-title"/>
+                <BarChart fx:id="severityChart" prefHeight="280">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis label="events" minorTickVisible="false"/></yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="12">
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="550">
+                <Label text="RECENT ALERTS" styleClass="card-title"/>
+                <ListView fx:id="recentAlertsList" prefHeight="200"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="550">
+                <Label text="LIVE ACTIVITY" styleClass="card-title"/>
+                <ListView fx:id="activityList" prefHeight="200"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

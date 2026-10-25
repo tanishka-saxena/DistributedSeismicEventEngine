@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.seismic.controller.SimulatorControlsController" spacing="8" styleClass="simulator-panel">
+    <Label text="SIMULATOR" styleClass="sidebar-heading"/>
+    <HBox spacing="6">
+        <Button fx:id="startButton" text="Start" onAction="#onStart" styleClass="btn-start" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="stopButton" text="Stop" onAction="#onStop" styleClass="btn-stop" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="resetButton" text="Reset" onAction="#onReset" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <Label text="Target sensor / zone" styleClass="sidebar-label"/>
+    <ComboBox fx:id="targetCombo" maxWidth="Infinity"/>
+    <Label text="Scenarios" styleClass="sidebar-label"/>
+    <GridPane fx:id="scenarioGrid" hgap="6" vgap="6">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50"/>
+            <ColumnConstraints percentWidth="50"/>
+        </columnConstraints>
+        <Button text="Normal" onAction="#onNormal" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Button text="Minor event" onAction="#onMinorEvent" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button text="Major event" onAction="#onMajorEvent" styleClass="btn-danger" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Button text="Isolated spike" onAction="#onIsolatedSpike" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button text="Sensor fault" onAction="#onSensorFault" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Button text="Comm. failure" onAction="#onCommunicationFailure" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button text="Noisy data" onAction="#onNoisyData" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Button text="Invalid data" onAction="#onInvalidData" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+    <Label fx:id="scenarioStatus" wrapText="true" styleClass="scenario-status"/>
+</VBox>

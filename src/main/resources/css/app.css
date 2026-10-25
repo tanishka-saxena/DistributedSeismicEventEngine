@@ -1,0 +1,131 @@
+/* Distributed Seismic Event Detection Engine - application theme */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 12.5px;
+    -fx-base: #e9edf2;
+    -fx-accent: #2f6fb2;
+    -fx-focus-color: #2f6fb2;
+}
+
+.root-pane { -fx-background-color: #eef1f5; }
+
+/* ---------- header ---------- */
+.header {
+    -fx-background-color: linear-gradient(to right, #13243a, #1e3a5c);
+    -fx-padding: 12 18 12 18;
+}
+.app-title { -fx-text-fill: white; -fx-font-size: 19px; -fx-font-weight: bold; }
+.app-subtitle { -fx-text-fill: #a9bdd6; -fx-font-size: 11.5px; }
+.pill {
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-text-fill: white;
+}
+.pill-ok { -fx-background-color: #1f9d55; }
+.pill-warn { -fx-background-color: #d98a00; }
+.pill-idle { -fx-background-color: #5b6b7f; }
+.demo-banner { -fx-background-color: #fff3cd; -fx-padding: 6 18 6 18; -fx-border-color: #f0d58c; -fx-border-width: 0 0 1 0; }
+.demo-banner .label { -fx-text-fill: #7a5600; }
+
+/* ---------- sidebar ---------- */
+.sidebar-scroll, .sidebar-scroll > .viewport { -fx-background-color: #17283f; -fx-background: #17283f; }
+.sidebar { -fx-background-color: #17283f; -fx-padding: 14 12 14 12; -fx-pref-width: 240; }
+.sidebar-heading { -fx-text-fill: #7f97b6; -fx-font-size: 10.5px; -fx-font-weight: bold; -fx-padding: 4 0 4 2; }
+.sidebar-label { -fx-text-fill: #c4d3e6; -fx-font-size: 11px; }
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d6e2f0;
+    -fx-alignment: center-left;
+    -fx-padding: 8 10 8 12;
+    -fx-background-radius: 6;
+    -fx-font-size: 13px;
+}
+.nav-button:hover { -fx-background-color: #22395a; }
+.nav-button:selected { -fx-background-color: #2f6fb2; -fx-text-fill: white; -fx-font-weight: bold; }
+.simulator-panel .button { -fx-font-size: 11.5px; }
+.scenario-status { -fx-text-fill: #c4d3e6; -fx-font-size: 11px; }
+.btn-start { -fx-base: #2e9d5b; -fx-text-fill: white; -fx-font-weight: bold; }
+.btn-stop { -fx-base: #c0473a; -fx-text-fill: white; -fx-font-weight: bold; }
+.btn-danger { -fx-base: #e8b4ae; }
+.btn-primary { -fx-base: #2f6fb2; -fx-text-fill: white; }
+
+/* ---------- pages and cards ---------- */
+.content-area { -fx-background-color: #eef1f5; }
+.page-scroll, .page-scroll > .viewport { -fx-background-color: #eef1f5; -fx-background: #eef1f5; }
+.page { -fx-padding: 16 18 16 18; }
+.page-title { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1b2a3d; }
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(gaussian, rgba(20, 40, 70, 0.10), 8, 0, 0, 2);
+}
+.card-title { -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #5b6b7f; }
+.hint { -fx-text-fill: #6b7a8c; -fx-font-size: 11.5px; }
+.tab-body { -fx-padding: 8; }
+.placeholder { -fx-text-fill: #8593a6; -fx-font-size: 13px; -fx-padding: 20; }
+
+.metric-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 10 12 10 12;
+    -fx-border-color: transparent transparent transparent #2f6fb2;
+    -fx-border-width: 0 0 0 4;
+    -fx-effect: dropshadow(gaussian, rgba(20, 40, 70, 0.10), 6, 0, 0, 2);
+    -fx-min-width: 100;
+}
+.metric-ok { -fx-border-color: transparent transparent transparent #1f9d55; }
+.metric-bad { -fx-border-color: transparent transparent transparent #d64541; }
+.metric-warn { -fx-border-color: transparent transparent transparent #e69a1c; }
+.metric-muted { -fx-border-color: transparent transparent transparent #8a96a5; }
+.metric-value { -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1b2a3d; }
+.metric-small { -fx-font-size: 12.5px; -fx-font-weight: bold; -fx-text-fill: #1b2a3d; }
+.metric-label { -fx-text-fill: #6b7a8c; -fx-font-size: 11px; }
+
+.system-status { -fx-font-size: 20px; -fx-font-weight: bold; }
+.status-normal { -fx-text-fill: #1f9d55; }
+.status-idle { -fx-text-fill: #5b6b7f; }
+.status-warning { -fx-text-fill: #c77700; }
+.status-alarm { -fx-text-fill: #c0392b; }
+.latest-event { -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1b2a3d; }
+.most-urgent { -fx-background-color: white; -fx-padding: 8; -fx-background-radius: 6; -fx-font-weight: bold; }
+
+/* ---------- map ---------- */
+.map-holder { -fx-background-color: #101b2b; -fx-background-radius: 6; }
+.legend .label { -fx-font-size: 11px; }
+.legend-active { -fx-text-fill: #1f9d55; }
+.legend-offline { -fx-text-fill: #7f8c8d; }
+.legend-faulty { -fx-text-fill: #e74c3c; }
+.legend-ring { -fx-text-fill: #2f6fb2; }
+.legend-quality { -fx-text-fill: #d98a00; }
+
+/* ---------- table rows ---------- */
+.table-row-cell.status-offline { -fx-background-color: #e7eaee; }
+.table-row-cell.status-faulty { -fx-background-color: #fbe3e1; }
+.table-row-cell.status-maintenance { -fx-background-color: #e1eefb; }
+.table-row-cell.sev-minor { -fx-background-color: #fff8db; }
+.table-row-cell.sev-moderate { -fx-background-color: #ffedd9; }
+.table-row-cell.sev-major { -fx-background-color: #fde0dc; }
+.table-row-cell.sev-critical { -fx-background-color: #f8c8c2; }
+.table-row-cell.alert-critical { -fx-background-color: #f8c8c2; }
+.table-row-cell.alert-high { -fx-background-color: #fde0dc; }
+.table-row-cell.alert-warning { -fx-background-color: #fff3d6; }
+.table-row-cell.acknowledged { -fx-opacity: 0.55; }
+.table-row-cell:selected { -fx-background-color: #2f6fb2; }
+.list-cell.alert-critical { -fx-text-fill: #b0281a; -fx-font-weight: bold; }
+.list-cell.alert-high { -fx-text-fill: #c0392b; }
+.list-cell.alert-warning { -fx-text-fill: #a86500; }
+.list-cell:selected { -fx-text-fill: white; }
+
+/* ---------- status bar ---------- */
+.status-bar { -fx-background-color: #dde3ea; -fx-padding: 5 14 5 14; }
+.status-bar .label { -fx-text-fill: #34465c; -fx-font-size: 11.5px; }
+
+/* ---------- charts ---------- */
+.chart { -fx-padding: 4; }
+.chart-plot-background { -fx-background-color: #fbfcfd; }
+.chart-series-line { -fx-stroke-width: 2px; }
+.default-color0.chart-bar { -fx-bar-fill: #2f6fb2; }

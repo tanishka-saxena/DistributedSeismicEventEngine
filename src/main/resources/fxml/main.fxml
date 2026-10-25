@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.seismic.controller.MainController" styleClass="root-pane">
+    <top>
+        <VBox>
+            <HBox styleClass="header" alignment="CENTER_LEFT" spacing="14">
+                <VBox>
+                    <Label text="Distributed Seismic Event Detection Engine" styleClass="app-title"/>
+                    <Label text="Educational simulation of a sensor network. Not an earthquake prediction or warning system."
+                           styleClass="app-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="monitoringPill" styleClass="pill"/>
+                <Label fx:id="storagePill" styleClass="pill"/>
+            </HBox>
+            <HBox fx:id="demoBanner" styleClass="demo-banner" alignment="CENTER_LEFT">
+                <Label fx:id="demoBannerText" wrapText="true"/>
+            </HBox>
+        </VBox>
+    </top>
+    <left>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="sidebar-scroll">
+            <VBox styleClass="sidebar" spacing="4">
+                <Label text="SCREENS" styleClass="sidebar-heading"/>
+                <ToggleButton fx:id="navDashboard" text="Dashboard" styleClass="nav-button" maxWidth="Infinity"/>
+                <ToggleButton fx:id="navNetwork" text="Sensor Network" styleClass="nav-button" maxWidth="Infinity"/>
+                <ToggleButton fx:id="navDataset" text="Dataset" styleClass="nav-button" maxWidth="Infinity"/>
+                <ToggleButton fx:id="navEvents" text="Event History" styleClass="nav-button" maxWidth="Infinity"/>
+                <ToggleButton fx:id="navAlerts" text="Alerts" styleClass="nav-button" maxWidth="Infinity"/>
+                <Separator>
+                    <VBox.margin><Insets top="10" bottom="6"/></VBox.margin>
+                </Separator>
+                <fx:include source="simulator_controls.fxml"/>
+            </VBox>
+        </ScrollPane>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+    <bottom>
+        <HBox styleClass="status-bar" spacing="20" alignment="CENTER_LEFT">
+            <Label fx:id="statusLabel" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Label fx:id="throughputLabel"/>
+        </HBox>
+    </bottom>
+</BorderPane>
